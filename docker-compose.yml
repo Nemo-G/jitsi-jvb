@@ -164,10 +164,7 @@ services:
       - LOG_LEVEL
       - PUBLIC_URL
       - TZ
-    networks:
-      meet.jitsi:
-        aliases:
-          - ${XMPP_SERVER}
+    network_mode: bridge
 
   # Focus component
   jicofo:
@@ -210,10 +207,9 @@ services:
       - XMPP_INTERNAL_MUC_DOMAIN
       - XMPP_MUC_DOMAIN
       - XMPP_SERVER
-    depends_on:
-      - prosody
-    networks:
-      meet.jitsi:
+    links:
+      - "prosody:${XMPP_SERVER}"
+    network_mode: bridge
 
   # Video bridge
   jvb:
@@ -243,13 +239,6 @@ services:
       - JVB_WS_SERVER_ID
       - PUBLIC_URL
       - TZ
-    depends_on:
-      - prosody
-    networks:
-      meet.jitsi:
-        aliases:
-          - jvb.meet.jitsi
-
-# Custom network so all services can communicate using a FQDN
-networks:
-  meet.jitsi:
+    links:
+      - "prosody:${XMPP_SERVER}"
+    network_mode: bridge
