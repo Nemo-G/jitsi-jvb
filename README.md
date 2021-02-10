@@ -17,3 +17,7 @@ The installation manual is available [here](https://jitsi.github.io/handbook/doc
 * Support container replicas (where applicable).
 * TURN server.
 
+### Special Config
+
+Set vm public address to `DOCKER_HOST_ADDRESS` in generated `.env`
+
