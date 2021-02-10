@@ -247,8 +247,8 @@ services:
       - prosody
     networks:
       meet.jitsi:
-      aliases:
-        - jvb.meet.jitsi
+        aliases:
+          - jvb.meet.jitsi
 
 # Custom network so all services can communicate using a FQDN
 networks:
